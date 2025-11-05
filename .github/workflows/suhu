@@ -1,0 +1,34 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+double celsiusToFahrenheit(double celsius) {
+    return (celsius * 9.0 / 5.0) + 32;
+}
+
+double celsiusToKelvin(double celsius) {
+    return celsius + 273.15;
+}
+
+int main() {
+    int jumlahData;
+    cout << "Masukkan jumlah data suhu: ";
+    cin >> jumlahData;
+    double celsius[jumlahData];
+    
+    for (int i = 0; i < jumlahData; i++) {
+        cout << "Masukkan suhu ke-" << (i + 1) << " (Celsius): ";
+        cin >> celsius[i];
+    }
+    cout << "\nCelcius  Fahrenheit  Kelvin" << endl;
+    
+    for (int i = 0; i < jumlahData; i++) {
+        double fahrenheit = celsiusToFahrenheit(celsius[i]);
+        double kelvin = celsiusToKelvin(celsius[i]);
+        cout << fixed << setprecision(2);
+        cout << setw(7) << celsius[i] << "  ";
+        cout << setw(10) << fahrenheit << "  ";
+        cout << setw(6) << kelvin << endl;
+    }
+    return 0;
+}
