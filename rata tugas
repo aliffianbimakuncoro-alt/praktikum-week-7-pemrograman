@@ -1,0 +1,39 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+double hitungRataRata(double nilai[], int jumlah) {
+    double total = 0;
+    for (int i = 0; i < jumlah; i++) {
+        total += nilai[i];
+    }
+    return total / jumlah;
+}
+
+void tampilkanStatus(double rataRata) {
+    cout << "Rata-rata: " << fixed << setprecision(2) << rataRata << endl;
+    cout << "Status    : ";
+    
+    if (rataRata >= 70) {
+        cout << "LULUS" << endl;
+    } else {
+        cout << "TIDAK LULUS" << endl;
+    }
+}
+
+int main() {
+    int jumlah;
+    cout << "Masukkan jumlah nilai: ";
+    cin >> jumlah;
+    double nilai[jumlah];
+
+    for (int i = 0; i < jumlah; i++) {
+        cout << "Nilai ke-" << (i + 1) << ": ";
+        cin >> nilai[i];
+    }
+
+    double rataRata = hitungRataRata(nilai, jumlah);
+    tampilkanStatus(rataRata);
+    
+    return 0;
+}
