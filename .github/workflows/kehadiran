@@ -1,0 +1,41 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int totalHadir = 0;
+
+void updateTotalHadir(int hadir) {
+    totalHadir += hadir;
+}
+
+double hitungPersentaseKehadiran(int totalPertemuan, int jumlahMahasiswa) {
+    int totalPertemuanKelas = totalPertemuan * jumlahMahasiswa;
+    double persentase = (double)totalHadir / totalPertemuanKelas * 100;
+    return persentase;
+}
+
+void tampilkanHasil(int totalPertemuan, int jumlahMahasiswa) { 
+    int totalPertemuanKelas = totalPertemuan * jumlahMahasiswa;
+    double persentase = hitungPersentaseKehadiran(totalPertemuan, jumlahMahasiswa);
+    cout << "\nTotal kehadiran kelas : " << totalHadir << " dari " << totalPertemuanKelas << endl;
+    cout << "Persentase kehadiran  : " << fixed << setprecision(2) << persentase << " %" << endl;
+}
+
+int main() {
+    int jumlahMahasiswa, totalPertemuan;
+    cout << "Masukkan jumlah mahasiswa: ";
+    cin >> jumlahMahasiswa;
+    cout << "Masukkan total pertemuan: ";
+    cin >> totalPertemuan;
+    
+    for (int i = 0; i < jumlahMahasiswa; i++) {
+        int hadir;
+        cout << "Kehadiran mahasiswa ke-" << (i + 1) << ": ";
+        cin >> hadir;
+        
+        updateTotalHadir(hadir);
+    }
+
+    tampilkanHasil(totalPertemuan, jumlahMahasiswa);
+    return 0;
+}
